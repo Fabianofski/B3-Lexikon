@@ -4,21 +4,39 @@
     <meta charset="UTF-8">
     <title>Kontaktformular</title>
 </head>
-<body>
-<h1>Kontakt</h1>
-<form>
-  <label>
-    Mailadresse <input type="email" name="a" value="Maxmustermann@hwr-mail.de">
-      <br/>
-      Kreditkartennummer <input type="number" name="b" value="0000 0000 0000 0000">
-      <br/>
-      CCV <input type="password" name="c" value="***">
-      <br/>
-      Ablaufdatum <input type="date" name="d" value="XX/XX">
-  </label>
-</form>
+  <body>
+    <h1>Kontakt</h1>
+    <form>
+      <div>
+        <input type="text" id="firstname" name="Vorname" placeholder="Ihr Vorname..">
+        <label for="firstname">Vorname</label>
+      </div>
 
-<a href="../index.html"> Back</a>
+      <div>
+        <input type="text" id="lastname" name="Nachname" placeholder="Ihr Nachname..">
+        <label for="lastname">Nachname</label>
+      </div>
 
-</body>
+      <div>
+        <select id="subjectType" name="subjectType">
+          <option value="content">Inhalt</option>
+          <option value="design">Design</option>
+          <option value="bug">Bug</option>
+          <option value="other">Sonstiges</option>
+        </select>
+        <label for="subjectType">Thema</label>
+      </div>
+
+      <div>
+        <textarea id="subject" name="Anliegen" placeholder="Ihr Anliegen.."></textarea>
+        <label for="subject">Anliegen</label>
+      </div>
+
+      <input type="submit">
+
+    </form>
+
+    <a href="../index.html"> Back</a>
+
+  </body>
 </html>
