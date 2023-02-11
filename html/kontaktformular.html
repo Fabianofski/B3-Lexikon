@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Kontaktformular</title>
+  <meta charset="UTF-8">
+  <title>Kontaktformular</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/contact.css">
 </head>
   <body>
-    <h1>Kontakt</h1>
-    <form>
-      <div>
-        <input type="text" id="firstname" name="Vorname" placeholder="Ihr Vorname..">
-        <label for="firstname">Vorname</label>
-      </div>
+    <div class="container">
+      <h1>Kontakt</h1>
+      <form class="contactForm">
+        <div>
+          <label for="firstname">Vorname</label>
+          <input type="text" id="firstname" name="Vorname" placeholder="Ihr Vorname..">
+        </div>
 
-      <div>
-        <input type="text" id="lastname" name="Nachname" placeholder="Ihr Nachname..">
-        <label for="lastname">Nachname</label>
-      </div>
+        <div>
+          <label for="lastname">Nachname</label>
+          <input type="text" id="lastname" name="Nachname" placeholder="Ihr Nachname..">
+        </div>
 
-      <div>
-        <select id="subjectType" name="subjectType">
-          <option value="content">Inhalt</option>
-          <option value="design">Design</option>
-          <option value="bug">Bug</option>
-          <option value="other">Sonstiges</option>
-        </select>
-        <label for="subjectType">Thema</label>
-      </div>
+        <div>
+          <label for="subjectType">Thema</label>
+          <select id="subjectType" name="subjectType">
+            <option value="content">Inhalt</option>
+            <option value="design">Design</option>
+            <option value="bug">Bug</option>
+            <option value="other">Sonstiges</option>
+          </select>
+        </div>
 
-      <div>
-        <textarea id="subject" name="Anliegen" placeholder="Ihr Anliegen.."></textarea>
-        <label for="subject">Anliegen</label>
-      </div>
+        <div>
+          <label for="subject">Anliegen</label>
+          <textarea id="subject" name="Anliegen" placeholder="Ihr Anliegen.."></textarea>
+        </div>
 
-      <input type="submit">
+        <input type="submit">
 
-    </form>
+      </form>
 
-    <a href="../index.html"> Back</a>
-
+      <a href="../index.html"> Back</a>
+    </div>
   </body>
 </html>

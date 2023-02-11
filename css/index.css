@@ -1,0 +1,30 @@
+.articles {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 1000px) {
+  .articles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1500px) {
+  .articles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.article img {
+  width: 95vw;
+  max-width: 30rem;
+  aspect-ratio: 350/200;
+}
