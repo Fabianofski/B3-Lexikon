@@ -1,11 +1,11 @@
 .picWithText{
     display: flex;
     gap: 1rem;
-    flex-direction: row;
+    flex-direction: column;
 }
 @media (min-width: 1000px) {
     .picWithText {
-        grid-template-columns: repeat(2, 1fr);
+        flex-direction: row;
     }
 }
 
