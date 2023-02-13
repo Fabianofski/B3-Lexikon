@@ -1,0 +1,23 @@
+.picWithText{
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+}
+@media (min-width: 1000px) {
+    .picWithText {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+h1{
+    font-size: 40px;
+}
+h2{
+    font-size: 30px;
+}
+h3{
+    font-size: 20px;
+}
+p{
+    font-size: 17px;
+}
