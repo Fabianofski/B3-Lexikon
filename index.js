@@ -19,14 +19,20 @@ app.use("/", (req, res, next) => {
     next();
 })
 
-app.use("/html/:plant", (req, res, next) => {
-    const plant = req.params.plant.replace(".html", "");
-    let count = parseInt(req.cookies[plant]) || 0;
-    count++;
-    res.cookie(plant, count.toString());
+app.use("/plants/:plant", (req, res, next) => {
+  const plant = req.params.plant
+
+  if (req.path !== "/" || plant.endsWith(".css")) {
     next()
-});
+    return
+  }
+  
+  let count = parseInt(req.cookies[plant]) || 0;
+  count++;
+  res.cookie(plant, count.toString());
+  next()
+})
 
 app.use("/", express.static("public"))
 
-app.listen(PORT, () => console.log("Listening ..."));
+app.listen(PORT, () => console.log("Listening ..."))
