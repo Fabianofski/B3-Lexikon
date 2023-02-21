@@ -9,7 +9,6 @@ const sessions = [];
 app.use(cookieParser());
 
 app.use("/", (req, res, next) => {
-    console.log()
     if(!req.cookies.token) {
         const sessionId = Math.floor(Math.random() * 10000);
 
