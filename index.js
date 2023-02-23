@@ -25,7 +25,7 @@ app.get("/index.html", (req, res, next) => {
   res.redirect("/")
 })
 
-app.get("/", (req, res, next) => {
+app.get("/", (req, res) => {
   const articles = req.cookies
 
   const filtered = Object.entries(articles)
@@ -38,19 +38,18 @@ app.get("/", (req, res, next) => {
 
   const sorted = mapped.sort(([, a], [, b]) => b - a);
 
-  const topThree = sorted.slice(0, 3);
+  const firstThree = sorted.slice(0, 3);
 
-  const resultObj = topThree.reduce((acc, [key, value]) => {
+  const resultObj = firstThree.reduce((acc, [key, value]) => {
     acc[key] = value;
     return acc;
   }, {});
 
-  console.log(resultObj)
   const firstKey = Object.keys(resultObj)[0]
   const secondKey = Object.keys(resultObj)[1]
   const thirdKey = Object.keys(resultObj)[2]
-  console.log(firstKey)
-  const top = { first: {
+
+  const topThree = { first: {
     name: firstKey,
     value: resultObj[firstKey],
   }, second: {
@@ -62,7 +61,7 @@ app.get("/", (req, res, next) => {
   }
   }
   res.render('pages/index', {
-    topThree: top
+    topThree: topThree
   })
 })
 
