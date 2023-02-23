@@ -21,10 +21,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  font-size: 1.5rem;
 }
 
 .article img {
   width: 95vw;
   max-width: 30rem;
   aspect-ratio: 350/200;
+}
+
+.article p {
+  margin-top: 10px;
+}
+
+.article p::first-letter {
+  text-transform:capitalize;
 }
