@@ -10,21 +10,6 @@ app.set('view engine', 'ejs');
 
 app.use(cookieParser());
 
-app.use("/", (req, res, next) => {
-    if(!req.cookies.token) {
-        const sessionId = Math.floor(Math.random() * 10000);
-
-        sessions.push(sessionId);
-
-        res.cookie("token", sessionId);
-    }   
-    next();
-})
-
-app.get("/index.html", (req, res, next) => {
-  res.redirect("/")
-})
-
 app.get("/", (req, res) => {
   const articles = req.cookies
 
@@ -65,10 +50,10 @@ app.get("/", (req, res) => {
   })
 })
 
-app.use("/plants/:plant", (req, res, next) => {
+app.get("/plants/:plant/", (req, res, next) => {
   const plant = req.params.plant
   
-  if (req.path !== "/" || plant.endsWith(".css")) {
+  if (plant.endsWith(".css")) {
     next()
     return
   }
@@ -78,6 +63,17 @@ app.use("/plants/:plant", (req, res, next) => {
   count++;
   res.cookie(cookieName, count.toString());
   next()
+})
+
+app.use((req, res, next) => {
+    if(!req.cookies["token"]) {
+        const sessionId = Math.floor(Math.random() * 10000);
+
+        sessions.push(sessionId);
+
+        res.cookie("token", sessionId);
+    }
+    next();
 })
 
 app.use("/", express.static("public"))
