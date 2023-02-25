@@ -11,17 +11,29 @@
     <h1> LEXICON </h1>
     <a href="./html/kontaktformular.html">Kontakt</a>
 
-    <h2> Am meisten angesehen </h2>
-    <div class="articles">
+    <% if(mostViewed.length > 0) { %>
+      <h2> Am meisten angesehen </h2>
+      <div class="articles">
+        <% for(let i = 0; i < mostViewed.length; i++) { %>
+          <a href="./plants/<%= mostViewed[i][0] %>" class="article">
+            <img src="./plants/<%= mostViewed[i][0] %>/<%= mostViewed[i][0] %>.jpg" alt="<%= mostViewed[i][0] %> Thumbnail">
+            <p><%= mostViewed[i][0] %> (<%= mostViewed[i][1] %> mal aufgerufen)</p>
+          </a>
+        <% } %>
+      </div>
+    <% } %>
 
-      <% for(var i = 0; i < mostViewed.length; i++) { %>
-        <a href="./plants/<%= mostViewed[i][0] %>" class="article">
-          <img src="./plants/<%= mostViewed[i][0] %>/<%= mostViewed[i][0] %>.jpg">
-          <p><%= mostViewed[i][0] %> (<%= mostViewed[i][1] %> mal aufgerufen)</p>
-        </a>
-      <% } %>
-
-    </div>
+    <% if(favourites.length > 0) { %>
+      <h2> Favoriten: </h2>
+      <div class="articles">
+        <% for(let i = 0; i < favourites.length; i++) { %>
+          <a href="./plants/<%= favourites[i].toLowerCase() %>" class="article">
+            <img src="./plants/<%= favourites[i] %>/<%= favourites[i] %>.jpg" alt="<%= favourites[i] %> Thumbnail">
+            <p><%= favourites[i] %></p>
+          </a>
+        <% } %>
+      </div>
+    <% } %>
 
     <h2>Einträge über Pflanzen:</h2>
     <div class="articles">

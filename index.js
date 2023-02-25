@@ -5,6 +5,7 @@ const app = express();
 const PORT = 8080;
 
 const sessions = [];
+const favourites = {};
 
 app.set("view engine", "ejs");
 
@@ -20,24 +21,53 @@ app.get("/", (req, res) => {
     return [newKey, value];
   });
   const sorted = mapped.sort(([, a], [, b]) => b - a);
+
+  let savedArticles = [];
+  if (req.cookies["token"]) savedArticles = favourites[req.cookies["token"]] || [];
+
   res.render("pages/index", {
-    mostViewed: sorted
+    mostViewed: sorted,
+    favourites: savedArticles
   });
+});
+
+app.post("/favourite", (req, res, next) => {
+  const article = req.query.article.toLowerCase();
+  const token = req.cookies["token"];
+  if (!token || article === "") next();
+
+  if (favourites.hasOwnProperty(token) && !favourites[token].includes(article))
+    favourites[token].push(article);
+  else favourites[token] = [article];
+  res.end();
+});
+
+app.delete("/favourite", (req, res, next) => {
+  const article = req.query.article.toLowerCase();
+  const token = req.cookies["token"];
+
+  if (token && favourites[token]) {
+    const index = favourites[token].indexOf(article);
+    if (index > -1) favourites[token].splice(index, 1);
+  }
+  res.end();
 });
 
 app.get("/plants/:plant/", (req, res, next) => {
   const plant = req.params.plant;
 
-  if (plant.endsWith(".css")) {
-    next();
-    return;
-  }
-
-  const cookieName = `views-${plant}`;
+  const cookieName = `views-${plant.toLowerCase()}`;
   let count = parseInt(req.cookies[cookieName]) || 0;
   count++;
   res.cookie(cookieName, count.toString());
-  next();
+
+  const token = req.cookies["token"];
+  console.log(favourites);
+  const isFavourite = token && favourites[token] && favourites[token].includes(plant);
+
+  res.render(`plants/${plant}/${plant}`, {
+    isFavourite: isFavourite
+  });
 });
 
 app.use((req, res, next) => {
