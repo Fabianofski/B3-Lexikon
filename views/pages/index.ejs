@@ -10,46 +10,44 @@
   <div class="container">
     <h1> LEXICON </h1>
     <a href="./html/kontaktformular.html">Kontakt</a>
-      <h2>Einträge über Pflanzen:</h2>
+
+    <h2> Am meisten angesehen </h2>
     <div class="articles">
-      <a href="./plants/estragon" class="article">
-        <img src="./plants/estragon/estragon.jpg">
-        <p>Estragon</p>
-      </a>
-      <a href="./plants/basilikum" class="article">
-        <img src="./plants/basilikum/basilikum.jpg">
-        <p>Basilikum</p>
-      </a>
-      <a href="./plants/tomate" class="article">
-        <img src="./plants/tomate/tomate.jpg">
-        <p>Tomate</p>
-      </a>
-      <a href="./plants/estragon" class="article">
-        <img src="./plants/estragon/estragon.jpg">
-        <p>Estragon</p>
-      </a>
-      <a href="./plants/basilikum" class="article">
-        <img src="./plants/basilikum/basilikum.jpg">
-        <p>Basilikum</p>
-      </a>
-      <a href="./plants/tomate" class="article">
-        <img src="./plants/tomate/tomate.jpg">
-        <p>Tomate</p>
-      </a>
+
+      <% for(var i = 0; i < mostViewed.length; i++) { %>
+        <a href="./plants/<%= mostViewed[i][0] %>" class="article">
+          <img src="./plants/<%= mostViewed[i][0] %>/<%= mostViewed[i][0] %>.jpg">
+          <p><%= mostViewed[i][0] %> (<%= mostViewed[i][1] %> mal aufgerufen)</p>
+        </a>
+      <% } %>
+
     </div>
-    <h1> Am meisten angesehen </h1>
+
+    <h2>Einträge über Pflanzen:</h2>
     <div class="articles">
-      <a href="./plants/<%= topThree.first.name %>" class="article">
-        <img src="./plants/<%= topThree.first.name %>/<%= topThree.first.name %>.jpg">
-        <p><%= topThree.first.name %> (<%= topThree.first.value %> mal aufgerufen)</p>
+      <a href="./plants/estragon" class="article">
+        <img src="./plants/estragon/estragon.jpg">
+        <p>Estragon</p>
       </a>
-      <a href="./plants/<%= topThree.second.name %>" class="article">
-        <img src="./plants/<%= topThree.second.name %>/<%= topThree.second.name %>.jpg">
-        <p><%= topThree.second.name %> (<%= topThree.second.value %> mal aufgerufen)</p>
+      <a href="./plants/basilikum" class="article">
+        <img src="./plants/basilikum/basilikum.jpg">
+        <p>Basilikum</p>
       </a>
-      <a href="./plants/<%= topThree.third.name %>" class="article">
-        <img src="./plants/<%= topThree.third.name %>/<%= topThree.third.name %>.jpg">
-        <p><%= topThree.third.name %> (<%= topThree.third.value %> mal aufgerufen)</p>
+      <a href="./plants/tomate" class="article">
+        <img src="./plants/tomate/tomate.jpg">
+        <p>Tomate</p>
+      </a>
+      <a href="./plants/estragon" class="article">
+        <img src="./plants/estragon/estragon.jpg">
+        <p>Estragon</p>
+      </a>
+      <a href="./plants/basilikum" class="article">
+        <img src="./plants/basilikum/basilikum.jpg">
+        <p>Basilikum</p>
+      </a>
+      <a href="./plants/tomate" class="article">
+        <img src="./plants/tomate/tomate.jpg">
+        <p>Tomate</p>
       </a>
     </div>
   </div>
