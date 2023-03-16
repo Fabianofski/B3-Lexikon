@@ -13,3 +13,17 @@ async function removeFromFavourites(articleName) {
   document.getElementById("removeFavourite").classList.add("hidden");
   document.getElementById("addFavourite").classList.remove("hidden");
 }
+
+async function addComment(articleName){
+  const comment = document.getElementById("comment").value;
+  const commentName = document.getElementById("comment-name").value;
+
+  if(comment === "" || commentName === ""){
+    return;
+  }
+
+  await fetch(`/comment?article=${articleName}&comment=${comment}&name=${commentName}`, {
+    method: "POST"
+  });
+  window.location.reload();
+}

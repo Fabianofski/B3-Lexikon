@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Basilikum</title>
     <script src="/plants/scripts/articles.js"></script>
+    <script src="/B3-Lexikon/index.js"></script>
   </head>
   <body>
     <h1>Basilikum</h1>
@@ -141,6 +142,28 @@
         asiatischen Küche z.B. Thailands oder Vietnams.
       </p>
     </div>
+
+    <div>
+      <label>Name:</label>
+      <input id="comment-name" type="text" />
+      <label>Kommentar:</label>
+      <textarea id="comment"></textarea>
+      <button id="submit-btn" onclick="addComment('tomate')">Submit</button>
+    </div>
+    <div id="comment-section"></div>
+
+    <% if(comments["basilikum"] && comments["basilikum"].length > 0) { %>
+      <h2> Kommentare: </h2>
+      <div class="articles">
+        <% for(let i = 0; i < comments["basilikum"].length; i++) { %>
+            <p>
+              <%= comments["basilikum"][i].name %>:
+              <%= comments["basilikum"][i].comment %>
+            </p>
+
+        <% } %>
+      </div>
+    <% } %>
 
     <a href="/"> Back</a>
     <a href="https://de.wikipedia.org/wiki/Basilikum">Quelle: Wikipedia</a>

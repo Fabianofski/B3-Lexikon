@@ -180,6 +180,28 @@
       </table>
     </div>
 
+    <div>
+      <label>Name:</label>
+      <input id="comment-name" type="text" />
+      <label>Kommentar:</label>
+      <textarea id="comment"></textarea>
+      <button id="submit-btn" onclick="addComment('tomate')">Submit</button>
+    </div>
+    <div id="comment-section"></div>
+
+    <% if(comments["tomate"] && comments["tomate"].length > 0) { %>
+      <h2> Kommentare: </h2>
+      <div class="articles">
+        <% for(let i = 0; i < comments["tomate"].length; i++) { %>
+          <p>
+            <%= comments["tomate"][i].name %>:
+            <%= comments["tomate"][i].comment %>
+          </p>
+
+        <% } %>
+      </div>
+    <% } %>
+
     <a href="/"> Back</a>
     <a href="https://de.wikipedia.org/wiki/Tomate">Quelle: Wikipedia</a>
   </body>

@@ -6,6 +6,7 @@ const PORT = 8080;
 
 const sessions = [];
 const favourites = {};
+const comments = {};
 
 app.set("view engine", "ejs");
 
@@ -84,3 +85,25 @@ app.use((req, res, next) => {
 app.use("/", express.static("public"));
 
 app.listen(PORT, () => console.log("Listening ..."));
+
+app.post("/comment", (req, res, next) => {
+  const comment = req.query.comment;
+  const name = req.query.name;
+  const article = req.query.article.toLowerCase();
+  const token = req.cookies["token"];
+  if (!token || article === "") next();
+
+  if (comments.hasOwnProperty(article))
+    comments[article].push({
+      name: name,
+      comment: comment
+    });
+  else comments[article] = [{
+      name: name,
+      comment: comment,
+    }
+  ];
+
+  console.log(comments);
+  res.end();
+});

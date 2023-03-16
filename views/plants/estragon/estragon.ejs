@@ -122,6 +122,29 @@
       <br />
     </div>
 
+    <div>
+      <label>Name:</label>
+      <input id="comment-name" type="text" />
+      <label>Kommentar:</label>
+      <textarea id="comment"></textarea>
+      <button id="submit-btn" onclick="addComment('tomate')">Submit</button>
+    </div>
+
+    <div id="comment-section"></div>
+
+    <% if(comments["estragon"] && comments["estragon"].length > 0) { %>
+      <h2> Kommentare: </h2>
+      <div class="articles">
+        <% for(let i = 0; i < comments["estragon"].length; i++) { %>
+          <p>
+            <%= comments["estragon"][i].name %>:
+            <%= comments["estragon"][i].comment %>
+          </p>
+
+        <% } %>
+      </div>
+    <% } %>
+
     <a href="/"> Back</a>
     <a href="https://de.wikipedia.org/wiki/Estragon">Quelle: Wikipedia</a>
   </body>
