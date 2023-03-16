@@ -63,11 +63,10 @@ app.get("/plants/:plant/", (req, res, next) => {
   res.cookie(cookieName, count.toString());
 
   const token = req.cookies["token"];
-  console.log(favourites);
   const isFavourite = token && favourites[token] && favourites[token].includes(plant);
-
   res.render(`plants/${plant}/${plant}`, {
-    isFavourite: isFavourite
+    isFavourite: isFavourite,
+    comments: comments
   });
 });
 
@@ -96,10 +95,12 @@ app.post("/comment", (req, res, next) => {
   if (comments.hasOwnProperty(article))
     comments[article].push({
       name: name,
+      token: token,
       comment: comment
     });
   else comments[article] = [{
       name: name,
+      token: token,
       comment: comment,
     }
   ];

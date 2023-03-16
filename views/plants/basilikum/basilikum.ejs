@@ -157,7 +157,7 @@
       <div class="articles">
         <% for(let i = 0; i < comments["basilikum"].length; i++) { %>
             <p>
-              <%= comments["basilikum"][i].name %>:
+              <%= comments["basilikum"][i].name %>(<%= comments["basilikum"][i].token %>):
               <%= comments["basilikum"][i].comment %>
             </p>
 
